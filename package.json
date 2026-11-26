@@ -1,0 +1,10 @@
+{
+  "name": "pokechat",
+  "private": true,
+  "workspaces": ["apps/*"],
+  "scripts": {
+    "dev": "bun run --filter '*' dev",
+    "test": "bun run --filter @pokechat/api test",
+    "typecheck": "bun run --filter '*' typecheck"
+  }
+}
