@@ -22,18 +22,6 @@ Variables d'environnement (API) : `OLLAMA_MODEL` (défaut `qwen3:4b`), `OLLAMA_U
 
 Au premier lancement, l'API construit en arrière-plan l'index des noms français (~1000 requêtes, une seule fois, puis `.cache/fr-names.json`). Pendant ce temps, les noms anglais fonctionnent déjà ; les noms français sont acceptés dès que l'index est prêt (quelques minutes).
 
-## Modèle choisi
-
-Par défaut `qwen2.5:7b`. Raisons a priori : bon support du tool calling dans Ollama, français correct, ~5 Go de mémoire, pas de mode « réflexion » à désactiver. Le modèle se change avec `OLLAMA_MODEL` sans toucher au code.
-
-> **À compléter avec mes propres mesures** (ce choix est une hypothèse tant que je ne l'ai pas testé sur ma machine) :
->
-> | Modèle | Latence / tour | Bon outil appelé (sur 10 questions) | Réponse fidèle aux données | Qualité du français |
-> |---|---|---|---|---|
-> | qwen2.5:7b | … | … | … | … |
-> | llama3.1:8b | … | … | … | … |
->
-> Ce qui me ferait changer d'avis : trop d'appels d'outils ratés ou une latence > 10 s par tour (→ essayer un modèle plus petit/plus gros selon la RAM).
 
 ## Architecture et choix
 
@@ -76,4 +64,3 @@ apps/web  (React + Vite)   deux onglets : Questions / Combat
 - Pas de détection des affirmations non fondées dans la réponse : le garde-fou est la contrainte d'outils + l'affichage des sources.
 - États de combat en mémoire (perdus au redémarrage), pas d'authentification.
 - Avec plus de temps : évaluation automatique de l'agent (jeu de questions + vérification des chiffres cités contre les résultats d'outils), index français des attaques, persistance des combats, streaming des réponses, règles de combat plus riches, tests d'intégration avec PokéAPI et Ollama simulés.
-# pokechat
